@@ -1,0 +1,19 @@
+Title : The Gympass Github Commits Challenge
+[ github logo animation ]
+
+[loader animation]
+working (out) on it...
+
+[404]
+Sorry, nothing here 😔
+[home button]
+
+[empty response for commits]
+'no commits yet, send PRs! 🆘'
+
+[empty return for search]
+nothing matching here, try another search 🕵️
+
+
+Footer:
+made with 🧠, 💪 and ❤️ by <a href='https://github.com/willianwelbert' target='_blank' rel='noreferrer noopener'>willian welbert</a>

@@ -1,25 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {Switch, Route} from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Switch>
+      <Route exact path='/' render={() => <h1>hello world</h1> } />
+      <Route exact path='/:repo' render={() => <h1>commits page</h1> } />
+      <Route render={() => <h1>404 page</h1>} />
+    </Switch>
+     <footer>made with <span role='img' aria-label='brain emoji'>🧠</span>, <span role='img' aria-label='flexing arm emoji'>💪</span> and <span role='img' aria-label='red heart emoji'>❤️</span> by <a href='https://github.com/willianwelbert' target='_blank' rel='noreferrer noopener'>willian welbert</a></footer>
+    </>
   );
 }
 
