@@ -5,7 +5,7 @@ import {FooterContainer, FooterBrandLine, FooterCopy} from '../components/Footer
 
 export default {
   component: Footer,
-  title: 'general footer',
+  title: 'General Footer',
 };
 
 export const basic = () => 
@@ -16,7 +16,7 @@ export const basic = () =>
   </FooterContainer>
 
 
-export const gymPassBranded = () => 
+export const gympassBranded = () => 
   <FooterContainer >
     <FooterBrandLine/>
     <FooterCopy>
