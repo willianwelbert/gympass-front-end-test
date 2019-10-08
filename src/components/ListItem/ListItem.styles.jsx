@@ -24,24 +24,25 @@ export const ListItemTitle = styled.h4`
   width: 100%;
   margin: 0;
   text-align: left;
-  font-size: 1rem;
+  font-size: 1.3rem;
   color: #FF5A49;
   font-weight: 700;
   padding: 0.5rem;
 `
 
 export const ListItemDescription = styled.p`
-  font-size: 0.8rem;
+  font-size: 1rem;
+  line-height: 1.6rem;
   margin: 0;
   padding: 0.5rem;
 `
 
 export const ExtraInfoContainer = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   flex-direction: column;
-  width: 20%;
+  width: 25%;
   padding: 0.5rem 0.7rem;
 `
 
@@ -57,8 +58,8 @@ export const IconContainer = styled.div`
 `
 
 export const IconInfo = styled.span`
-  font-size: 0.9rem;
-  padding-left: 0.5rem;
+  font-size: 0.8rem;
+  padding-right: 0.5rem;
   text-align: center;
 `
 

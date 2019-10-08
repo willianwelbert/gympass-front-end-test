@@ -25,8 +25,8 @@ const ListItem = (props) => {
     </TextContainer>
     <ExtraInfoContainer>
       <IconContainer>
-        { itemType === 'repo' ? <Star className='star' /> : <Avatar/> }
         <IconInfo>{iconInfo}</IconInfo>
+        { itemType === 'repo' ? <Star className='star' /> : <Avatar/> }
       </IconContainer>
       { programmingLanguage && <ProgrammingLanguage>{programmingLanguage}</ProgrammingLanguage>}
     </ExtraInfoContainer>
