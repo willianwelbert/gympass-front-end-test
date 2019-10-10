@@ -1,14 +1,32 @@
 import React from 'react';
 import Lottie from 'react-lottie';
-import animationData from './loader-animation.json';
+import loaderAnimation from './loader-animation.json';
+import errorAnimation from './error-animation.json';
 
-const Loader = () => {
+import {LoaderContainer, LoaderCaption} from './Loader.styles';
+
+const Loader = ({displayError}) => {
   const defaultOptions = {
-    loop          : true,
-    autoplay      : true,
-    animationData : animationData
+    loop             : true,
+    autoplay         : true,
+    animationData    : displayError ? errorAnimation : loaderAnimation,
+    rendererSettings : {
+      preserveAspectRatio : 'xMidYMid meet'
+    }
   };
-  return <Lottie options={defaultOptions} />;
+
+  return (
+    <LoaderContainer>
+      <Lottie options={defaultOptions} />
+      {displayError ? (
+        <LoaderCaption>Oops...</LoaderCaption>
+      ) : (
+        <LoaderCaption>
+          working <span style={{color: '#18ccc0'}}> (out) </span> on it...
+        </LoaderCaption>
+      )}
+    </LoaderContainer>
+  );
 };
 
 export default Loader;

@@ -11,4 +11,5 @@ export const LoaderCaption = styled.h3`
   font-weight: 700;
   text-align: center;
   color: #ff5a59;
+  margin: 0;
 `;
