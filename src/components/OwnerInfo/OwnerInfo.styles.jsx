@@ -14,6 +14,7 @@ export const InfoContainer = styled.div`
 export const Info = styled.span`
   font-size: 1rem;
   text-align: center;
+  width: 30%;
 `;
 
 export const Caption = styled.span`

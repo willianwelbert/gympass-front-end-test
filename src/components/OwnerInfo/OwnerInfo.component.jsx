@@ -9,17 +9,23 @@ import {
 } from './OwnerInfo.styles';
 
 const OwnerInfo = (props) => {
-  const { avatarImg, repoCount } = props
+  const { avatarImg, repoCount, repoName, commitCount } = props
   return (
     <InfoContainer >
       <Info>
-        <Caption>owner:</Caption>
-        reactjs
+        {repoName 
+          ? <Caption>repository:</Caption>
+          : <Caption>owner:</Caption>
+        }
+        {repoName ? repoName : `reactjs`}
       </Info>
       <OwnerAvatar style={{ backgroundImage: `url("${avatarImg}")` }} />
       <Info>
-        <Caption>public repositories:</Caption>
-        {repoCount}
+        {commitCount
+          ? <Caption>nº of commits:</Caption>
+          : <Caption>public repos:</Caption>
+        }
+        {commitCount ? commitCount : repoCount}
       </Info>
     </InfoContainer>
   )

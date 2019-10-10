@@ -9,7 +9,17 @@ export default {
 const ownerProps = {
   avatarImg: 'https://avatars3.githubusercontent.com/u/6412038?v=4',
   repoCount: 75
+};
+
+const repoProps = {
+  avatarImg: 'https://avatars3.githubusercontent.com/u/6412038?v=4',
+  repoCount: 75,
+  repoName: 'nice repo',
+  commitCount: 9999
 }
 
-export const regular = () => 
+export const reposPage = () => 
   <OwnerInfo {...ownerProps} />
+
+export const commitsPage = () =>
+  <OwnerInfo {...repoProps} />
