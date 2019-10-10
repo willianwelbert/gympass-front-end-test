@@ -11,13 +11,13 @@ const Loader = ({displayError}) => {
     autoplay         : true,
     animationData    : displayError ? errorAnimation : loaderAnimation,
     rendererSettings : {
-      preserveAspectRatio : 'xMidYMid meet'
+      preserveAspectRatio : 'xMidYMid sliced'
     }
   };
 
   return (
     <LoaderContainer>
-      <Lottie options={defaultOptions} />
+      <Lottie options={defaultOptions} height="300px" />
       {displayError ? (
         <LoaderCaption>Oops...</LoaderCaption>
       ) : (

@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 export const LoaderContainer = styled.div`
   width: 100%;
-  height: 10rem;
+  height: 100%;
+  margin: 1rem 0;
 `;
 
 export const LoaderCaption = styled.h3`
