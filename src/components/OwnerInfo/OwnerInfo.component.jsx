@@ -33,7 +33,9 @@ const OwnerInfo = (props) => {
 
 OwnerInfo.propTypes = {
   avatarImg : PropTypes.string.isRequired,
-  repoCount : PropTypes.number.isRequired,
+  repoCount : PropTypes.number,
+  repoName : PropTypes.string,
+  commitCount : PropTypes.number,
 }
 
 export default OwnerInfo;
