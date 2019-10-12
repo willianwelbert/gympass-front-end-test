@@ -16,7 +16,7 @@ const Loader = ({displayError}) => {
   };
 
   return (
-    <LoaderContainer>
+    <LoaderContainer >
       <Lottie options={defaultOptions} height="300px" />
       {displayError ? (
         <LoaderCaption>Oops...</LoaderCaption>
