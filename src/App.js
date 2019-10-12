@@ -10,7 +10,7 @@ function App() {
       <Switch>
         <Route exact path='/' render={() => <h1>hello world</h1> } />
         <Route exact path='/:repo' render={() => <h1>commits page</h1> } />
-        <Route render={() => <ErrorPage />} />
+        <Route render={() => <ErrorPage message='404 page not found' />} />
       </Switch>
       <Footer data-test='footer' />
     </div>
