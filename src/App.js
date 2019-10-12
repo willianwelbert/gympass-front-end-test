@@ -10,7 +10,7 @@ function App() {
     <div data-test='app'>
       <Switch>
         <Route exact path='/' render={() => <ListPage />} />
-        <Route exact path='/:repo' render={() => <ListPage >} />
+        <Route exact path='/:repo' render={() => <ListPage />} />
         <Route render={() => <ErrorPage message='404 page not found' />} />
       </Switch>
       <Footer data-test='footer' />
