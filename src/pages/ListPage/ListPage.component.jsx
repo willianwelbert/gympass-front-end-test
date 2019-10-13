@@ -7,18 +7,18 @@ import List from '../../components/List/List.component';
 import ErrorMessage from '../../components/Error/Error.component';
 
 import { PageContainer } from '../ErrorPage/ErrorPage.styles';
-import { actionTypes } from '../../redux/actionTypes';
+import { fetchReposStartAsync } from '../../redux/actions/fetchRepos';
 
 const ListPage = ({
   error = false,
   reposList = [],
   avatarImg = 'https://avatars3.githubusercontent.com/u/6412038?v=4',
-  fetchData
+  fetchReposStartAsync
 }) => {
   useEffect(() => {
-    fetchData();
+    fetchReposStartAsync();
     // eslint-disable-next-line import/no-extraneous-dependencies
-  }, [fetchData]);
+  }, [fetchReposStartAsync]);
 
   return (
     <PageContainer data-test='list-page'>
@@ -49,7 +49,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchData: () => dispatch({ type: actionTypes.FETCH_DATA })
+    fetchReposStartAsync: () => dispatch(fetchReposStartAsync())
   };
 };
 
