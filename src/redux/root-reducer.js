@@ -1,5 +1,9 @@
- import { combineReducers } from 'redux';
+import { combineReducers } from 'redux';
 
- export default combineReducers({
-   reducerKey: 'imported reducer'
- })
+import toggleError from './reducers/toggleError.reducer';
+import fetchData from './reducers/fetchData.reducer';
+
+export default combineReducers({
+  error: toggleError,
+  reposList: fetchData
+});

@@ -1,32 +1,35 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Lottie from 'react-lottie';
 import loaderAnimation from './loader-animation.json';
 import errorAnimation from './error-animation.json';
 
-import {LoaderContainer, LoaderCaption} from './Loader.styles';
+import { LoaderContainer, LoaderCaption } from './Loader.styles';
 
-const Loader = ({displayError}) => {
+const Loader = ({ displayError }) => {
   const defaultOptions = {
-    loop             : true,
-    autoplay         : true,
-    animationData    : displayError ? errorAnimation : loaderAnimation,
-    rendererSettings : {
-      preserveAspectRatio : 'xMidYMid sliced'
-    }
+    loop: true,
+    autoplay: true,
+    animationData: displayError ? errorAnimation : loaderAnimation
   };
 
   return (
-    <LoaderContainer >
-      <Lottie options={defaultOptions} height="300px" />
+    <LoaderContainer>
+      <Lottie options={defaultOptions} height='300px' />
       {displayError ? (
         <LoaderCaption>Oops...</LoaderCaption>
       ) : (
         <LoaderCaption>
-          working <span style={{color: '#18ccc0'}}> (out) </span> on it...
+          working <span style={{ color: '#18ccc0' }}> (out) </span> on it...
         </LoaderCaption>
       )}
     </LoaderContainer>
   );
 };
 
-export default Loader;
+const mapStateToProps = state => {
+  const { error } = state;
+  return error;
+};
+
+export default connect(mapStateToProps)(Loader);
