@@ -6,7 +6,7 @@ import errorAnimation from './error-animation.json';
 
 import { LoaderContainer, LoaderCaption } from './Loader.styles';
 
-const Loader = ({ displayError }) => {
+export const Loader = ({ displayError }) => {
   const defaultOptions = {
     loop: true,
     autoplay: true,

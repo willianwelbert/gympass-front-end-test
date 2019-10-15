@@ -1,5 +1,5 @@
 import React from 'react';
-import Loader from '../components/Loader/Loader.component.jsx';
+import {Loader} from '../components/Loader/Loader.component.jsx';
 
 export default {
   component: Loader,
