@@ -9,11 +9,11 @@ import {
 } from './OwnerInfo.styles';
 
 const OwnerInfo = (props) => {
-  const { avatarImg, repoCount, repoName, commitCount } = props
+  const { avatarImg, repoCount, repoName, lastCommiter } = props
   return (
     <InfoContainer >
       <Info>
-        {repoName 
+        {repoName !== ''
           ? <Caption>repository:</Caption>
           : <Caption>owner:</Caption>
         }
@@ -21,11 +21,11 @@ const OwnerInfo = (props) => {
       </Info>
       <OwnerAvatar style={{ backgroundImage: `url("${avatarImg}")` }} />
       <Info>
-        {commitCount
-          ? <Caption>nº of commits:</Caption>
+        {lastCommiter
+          ? <Caption>last commiter:</Caption>
           : <Caption>public repos:</Caption>
         }
-        {commitCount ? commitCount : repoCount}
+        {lastCommiter ? lastCommiter : repoCount}
       </Info>
     </InfoContainer>
   )
@@ -35,7 +35,7 @@ OwnerInfo.propTypes = {
   avatarImg : PropTypes.string.isRequired,
   repoCount : PropTypes.number,
   repoName : PropTypes.string,
-  commitCount : PropTypes.number,
+  lastCommiter : PropTypes.string,
 }
 
 export default OwnerInfo;

@@ -15,7 +15,7 @@ const repoProps = {
   avatarImg: 'https://avatars3.githubusercontent.com/u/6412038?v=4',
   repoCount: 75,
   repoName: 'nice repo',
-  commitCount: 9999
+  lastCommiter: 'John Doe'
 }
 
 export const reposPage = () => 
