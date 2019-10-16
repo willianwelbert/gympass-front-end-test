@@ -31,11 +31,6 @@ const fetchData = (state = INITIAL_STATE, action) => {
         ...state,
         repoCount: action.payload
       };
-    case actionTypes.SET_AVATAR_IMG:
-        return {
-          ...state,
-          avatarImg: action.payload
-        }
     default:
       return state;
   }

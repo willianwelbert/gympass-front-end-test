@@ -9,8 +9,8 @@ function App() {
   return (
     <div data-test='app'>
       <Switch>
-        <Route exact path='/' render={() => <ListPage />} />
-        <Route exact path='/:repo' render={() => <ListPage />} />
+        <Route exact path='/' render={() => <ListPage itemType='repo' />} />
+        <Route exact path='/:repo' render={({match}) => <ListPage repoURLParam={match.params.repo} />} />
         <Route render={() => <ErrorPage message='404 page not found' />} />
       </Switch>
       <Footer data-test='footer' />

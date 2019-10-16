@@ -20,11 +20,6 @@ export const setRepoCount = repoCount => ({
   payload: repoCount
 });
 
-export const setAvatarImg = avatarImg => ({
-  type: actionTypes.SET_AVATAR_IMG,
-  payload: avatarImg
-})
-
 export const fetchReposStartAsync = () => {
   return dispatch => {
     dispatch(fetchReposStart());
@@ -34,7 +29,6 @@ export const fetchReposStartAsync = () => {
       .then( response => {
         console.log('general data', response);
         dispatch(setRepoCount(response.data.public_repos));
-        dispatch(setAvatarImg(response.data.avatar_url))
       } )
 
     axios
