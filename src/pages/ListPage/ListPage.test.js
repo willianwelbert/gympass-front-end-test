@@ -2,13 +2,10 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { findByTestAttr } from '../../testUtils';
 
-import ListPage from './ListPage.component';
+import { ListPage } from './ListPage.component';
 
 describe('renders page and components properly', () => {
-  const defaultProps = {
-    error: false,
-    reposList: []
-  };
+  let defaultProps = {error: false, reposList: []};
 
   const setup = (props = {}) => {
     const setupProps = { ...defaultProps, ...props };
