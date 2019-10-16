@@ -9,39 +9,39 @@ export default {
 const repoList = {
   listData : [
   {
-    title: 'Repo One',
+    name: 'Repo One',
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed placeat, accusantium consectetur ab ratione consequuntur',
-    itemType: 'repo',
-    iconInfo: '123',
-    programmingLanguage: 'javascript',
+    stargazers_count: '123',
+    language: 'javascript',
+    clone_url : true
   },
   {
-    title: 'Repo Two',
+    name: 'Repo Two',
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed placeat, accusantium consectetur ab ratione consequuntur',
-    itemType: 'repo',
-    iconInfo: '123',
-    programmingLanguage: 'javascript',
+    stargazers_count: '123',
+    language: 'javascript',
+    clone_url : true
   },
   {
-    title: 'Repo Three',
+    name: 'Repo Three',
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed placeat, accusantium consectetur ab ratione consequuntur',
-    itemType: 'repo',
-    iconInfo: '123',
-    programmingLanguage: 'javascript',
+    stargazers_count: '123',
+    language: 'javascript',
+    clone_url : true
   },
   {
-    title: 'Repo Four',
+    name: 'Repo Four',
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed placeat, accusantium consectetur ab ratione consequuntur',
-    itemType: 'repo',
-    iconInfo: '123',
-    programmingLanguage: 'C#',
+    stargazers_count: '123',
+    language: 'C#',
+    clone_url : true
   },
   {
-    title: 'Repo Five',
+    name: 'Repo Five',
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed placeat, accusantium consectetur ab ratione consequuntur',
-    itemType: 'repo',
-    iconInfo: '123',
-    programmingLanguage: 'javascript',
+    stargazers_count: '123',
+    language: 'javascript',
+    clone_url : true
   },
 ]};
 
@@ -49,23 +49,23 @@ const commitsList = {
   listData : [
     {
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed placeat, accusantium consectetur ab ratione consequuntur',
-      iconInfo: 'willianwelbert',
+      stargazers_count: 'willianwelbert',
     },
     {
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed placeat, accusantium consectetur ab ratione consequuntur',
-      iconInfo: 'reactjs',
+      stargazers_count: 'reactjs',
     },
     {
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed placeat, accusantium consectetur ab ratione consequuntur',
-      iconInfo: 'gympass',
+      stargazers_count: 'gympass',
     },
     {
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed placeat, accusantium consectetur ab ratione consequuntur',
-      iconInfo: 'gaearon',
+      stargazers_count: 'gaearon',
     },
     {
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed placeat, accusantium consectetur ab ratione consequuntur',
-      iconInfo: 'alexkrolick',
+      stargazers_count: 'alexkrolick',
     },
   ]
 }
