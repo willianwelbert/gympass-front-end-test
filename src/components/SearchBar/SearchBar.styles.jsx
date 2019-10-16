@@ -5,7 +5,7 @@ export const SearchBarContainer = styled.div`
   width: 80%;
   min-height: 1rem;
   padding: 1rem;
-  margin: 0.5rem auto;
+  margin: 1rem auto;
   border-radius: 3px;
   display: flex;
   justify-content: flex-start;
@@ -27,7 +27,6 @@ export const SearchForm = styled.form`
   margin: 0 auto;
   width: 70%;
   min-height: 1.5rem;
-  
 `
 
 export const SearchInputField = styled.input`
@@ -41,6 +40,7 @@ export const SearchInputField = styled.input`
 
 export const OrderingIconsContainer = styled.div`
   width: 15%;
+  max-width: 100px;
   display: flex;
   justify-content: space-around;
 
