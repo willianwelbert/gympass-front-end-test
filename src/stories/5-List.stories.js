@@ -48,24 +48,28 @@ const repoList = {
 const commitsList = {
   listData : [
     {
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed placeat, accusantium consectetur ab ratione consequuntur',
-      stargazers_count: 'willianwelbert',
+      commit : {
+        message : 'loren ipsum dolor sit amet'
+      },
+      author : {
+        login: 'willianwelbert'
+      }
     },
     {
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed placeat, accusantium consectetur ab ratione consequuntur',
-      stargazers_count: 'reactjs',
+      commit : {
+        message : 'loren ipsum dolor sit amet'
+      },
+      author : {
+        login: 'reactjs'
+      }
     },
     {
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed placeat, accusantium consectetur ab ratione consequuntur',
-      stargazers_count: 'gympass',
-    },
-    {
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed placeat, accusantium consectetur ab ratione consequuntur',
-      stargazers_count: 'gaearon',
-    },
-    {
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed placeat, accusantium consectetur ab ratione consequuntur',
-      stargazers_count: 'alexkrolick',
+      commit : {
+        message : 'loren ipsum dolor sit amet'
+      },
+      author : {
+        login: 'gympass'
+      }
     },
   ]
 }

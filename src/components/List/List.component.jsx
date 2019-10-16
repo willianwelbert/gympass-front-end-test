@@ -10,18 +10,23 @@ const List = (props) => {
     <ListContainer>
       <SearchBar />
       {listData.map( (item, idx) => {
-        const { name, language, clone_url, stargazers_count } = item;
-        let itemType
-        clone_url ? itemType = 'repo' : itemType = false;
+        const { name, language, clone_url, stargazers_count, description } = item;
+        
+        return clone_url 
+          ? <ListItem 
+            key={idx} 
+            description={description} 
+            programmingLanguage={language} 
+            title={name} 
+            itemType='repo'
+            iconInfo={stargazers_count}
+            /> 
+          : <ListItem 
+          key={idx}
+          description={item.commit.message}
+          iconInfo={item.author.login}
+          />;
 
-        return <ListItem 
-                  key={idx} 
-                  {...item} 
-                  programmingLanguage={language} 
-                  title={name} 
-                  itemType={itemType}
-                  iconInfo={stargazers_count}
-                  />
       } )}
     </ListContainer>
   )
