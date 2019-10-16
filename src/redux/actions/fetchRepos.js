@@ -15,15 +15,34 @@ export const fetchReposFailure = errorMessage => ({
   payload: errorMessage
 });
 
+export const setRepoCount = repoCount => ({
+  type: actionTypes.SET_REPO_COUNT,
+  payload: repoCount
+});
+
+export const setAvatarImg = avatarImg => ({
+  type: actionTypes.SET_AVATAR_IMG,
+  payload: avatarImg
+})
+
 export const fetchReposStartAsync = () => {
   return dispatch => {
     dispatch(fetchReposStart());
+
+    axios
+      .get('https://api.github.com/users/reactjs')
+      .then( response => {
+        console.log('general data', response);
+        dispatch(setRepoCount(response.data.public_repos));
+        dispatch(setAvatarImg(response.data.avatar_url))
+      } )
 
     axios
       .get('https://api.github.com/users/reactjs/repos')
       .then(response => {
         console.log(response.data);
         dispatch(fetchReposSuccess(response.data));
+        
       })
       .catch(error => {
         dispatch(fetchReposFailure(error));

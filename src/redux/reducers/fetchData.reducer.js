@@ -3,7 +3,7 @@ import { actionTypes } from '../actionTypes';
 const INITIAL_STATE = {
   reposList: [],
   isFetching: false,
-  errorMessage: undefined
+  errorMessage: ''
 };
 
 const fetchData = (state = INITIAL_STATE, action) => {
@@ -22,14 +22,20 @@ const fetchData = (state = INITIAL_STATE, action) => {
     case actionTypes.FETCH_DATA_FAILURE:
       return {
         ...state,
+        error: true,
         isFetching: false,
         errorMessage: action.payload
       };
-    case actionTypes.FETCH_DATA:
+    case actionTypes.SET_REPO_COUNT:
       return {
         ...state,
-        reposList: [{ description: 'repoOne' }, { description: 'test2' }]
+        repoCount: action.payload
       };
+    case actionTypes.SET_AVATAR_IMG:
+        return {
+          ...state,
+          avatarImg: action.payload
+        }
     default:
       return state;
   }

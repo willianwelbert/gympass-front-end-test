@@ -5,5 +5,5 @@ import fetchData from './reducers/fetchData.reducer';
 
 export default combineReducers({
   error: toggleError,
-  reposList: fetchData
+  reposData: fetchData
 });
