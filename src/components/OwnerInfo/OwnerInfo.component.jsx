@@ -9,7 +9,7 @@ import {
 } from './OwnerInfo.styles';
 
 const OwnerInfo = (props) => {
-  const { avatarImg, repoCount, repoName, lastCommiter } = props
+  const { repoCount, repoName, lastCommiter } = props
   return (
     <InfoContainer >
       <Info>
@@ -19,7 +19,7 @@ const OwnerInfo = (props) => {
         }
         {repoName ? repoName : `reactjs`}
       </Info>
-      <OwnerAvatar style={{ backgroundImage: `url("${avatarImg}")` }} />
+      <OwnerAvatar style={{ backgroundImage: `url("https://avatars0.githubusercontent.com/u/6412038?s=200&v=4")` }} />
       <Info>
         {lastCommiter
           ? <Caption>last commiter:</Caption>
@@ -32,7 +32,6 @@ const OwnerInfo = (props) => {
 }
 
 OwnerInfo.propTypes = {
-  avatarImg : PropTypes.string.isRequired,
   repoCount : PropTypes.number,
   repoName : PropTypes.string,
   lastCommiter : PropTypes.string,

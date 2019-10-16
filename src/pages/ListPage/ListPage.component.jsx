@@ -8,19 +8,31 @@ import ErrorMessage from '../../components/Error/Error.component';
 
 import { PageContainer } from './ListPage.styles';
 import { fetchReposStartAsync } from '../../redux/actions/fetchRepos';
+import { fetchCommitsStartAsync } from '../../redux/actions/fetchCommits';
 
-export const ListPage = ({
-  error = false,
-  reposList = [],
-  repoCount,
-  avatarImg = '',
-  fetchReposStartAsync
-}) => {
+export const ListPage = ( props ) => {
+  
+  const {
+    itemType,
+    repoURLParam,
+    fetchReposStartAsync, 
+    fetchCommitsStartAsync,
+    error = false,
+    reposData : { repoCount, reposList},
+    commitsData : {lastCommiter, commits}
+    } = props;
+  
+  
+
   useEffect(() => {
-    fetchReposStartAsync();
-  }, [fetchReposStartAsync]);
+    itemType === 'repo'
+      ? fetchReposStartAsync()
+      : fetchCommitsStartAsync(repoURLParam);
 
-  return (
+  }, [itemType, repoURLParam, fetchReposStartAsync, fetchCommitsStartAsync]);
+  
+  return itemType === 'repo'
+    ? (
     <PageContainer data-test='list-page'>
       {error && reposList.length === 0 ? (
         <>
@@ -34,21 +46,47 @@ export const ListPage = ({
         <Loader data-test='loader' />
       ) : (
         <>
-          <OwnerInfo data-test='owner-info' avatarImg={avatarImg} repoCount={repoCount} />
+          <OwnerInfo data-test='owner-info'
+            repoCount={repoCount}
+           />
           <List listData={reposList} />
         </>
       )}
     </PageContainer>
-  );
+  ) : (
+    <PageContainer data-test='list-page'>
+      {error && commits.length === 0 ? (
+        <>
+          <Loader data-test='loader' displayError />
+          <ErrorMessage
+            data-test='error-message'
+            message='error fetching data, please try refreshing the page'
+          />
+        </>
+      ) : commits.length === 0 ? (
+        <Loader data-test='loader' />
+      ) : (
+        <>
+          <OwnerInfo data-test='owner-info'
+            repoName={repoURLParam}
+            lastCommiter={lastCommiter}
+           />
+          <List listData={commits} />
+        </>
+      )}
+    </PageContainer>
+  )
 };
 
 const mapStateToProps = state => {
-  return state.reposData;
+  const { commitsData, reposData } = state;
+  return { commitsData, reposData }
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchReposStartAsync: () => dispatch(fetchReposStartAsync())
+    fetchReposStartAsync: () => dispatch(fetchReposStartAsync()),
+    fetchCommitsStartAsync: repoURLParam => dispatch(fetchCommitsStartAsync(repoURLParam)),
   };
 };
 
