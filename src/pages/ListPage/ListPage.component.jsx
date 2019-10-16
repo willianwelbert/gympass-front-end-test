@@ -6,18 +6,18 @@ import OwnerInfo from '../../components/OwnerInfo/OwnerInfo.component';
 import List from '../../components/List/List.component';
 import ErrorMessage from '../../components/Error/Error.component';
 
-import { PageContainer } from '../ErrorPage/ErrorPage.styles';
+import { PageContainer } from './ListPage.styles';
 import { fetchReposStartAsync } from '../../redux/actions/fetchRepos';
 
-const ListPage = ({
+export const ListPage = ({
   error = false,
   reposList = [],
-  avatarImg = 'https://avatars3.githubusercontent.com/u/6412038?v=4',
+  repoCount,
+  avatarImg = '',
   fetchReposStartAsync
 }) => {
   useEffect(() => {
     fetchReposStartAsync();
-    // eslint-disable-next-line import/no-extraneous-dependencies
   }, [fetchReposStartAsync]);
 
   return (
@@ -34,7 +34,7 @@ const ListPage = ({
         <Loader data-test='loader' />
       ) : (
         <>
-          <OwnerInfo data-test='owner-info' avatarImg={avatarImg} />
+          <OwnerInfo data-test='owner-info' avatarImg={avatarImg} repoCount={repoCount} />
           <List listData={reposList} />
         </>
       )}
@@ -43,8 +43,7 @@ const ListPage = ({
 };
 
 const mapStateToProps = state => {
-  const { reposList } = state;
-  return reposList;
+  return state.reposData;
 };
 
 const mapDispatchToProps = dispatch => {

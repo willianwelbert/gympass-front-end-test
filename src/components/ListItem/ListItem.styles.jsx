@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const ListItemContainer = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 80%;
   margin: 0.5rem auto;
