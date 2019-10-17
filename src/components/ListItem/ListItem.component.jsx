@@ -18,17 +18,17 @@ import {
 const ListItem = (props) => {
   const{ title, description, itemType, iconInfo, programmingLanguage } = props;
   return(
-    <ListItemContainer>
+    <ListItemContainer data-test='list-item' >
     <TextContainer>
-      { title && <ListItemTitle>{title}</ListItemTitle>}
+      { title && <ListItemTitle data-test='repo-name'>{title}</ListItemTitle>}
       <ListItemDescription>{description}</ListItemDescription>
     </TextContainer>
     <ExtraInfoContainer>
       <IconContainer>
-        <IconInfo>{iconInfo}</IconInfo>
-        { itemType === 'repo' ? <Star className='star' /> : <Avatar/> }
+        <IconInfo data-test='icon-info'>{iconInfo}</IconInfo>
+        { itemType === 'repo' ? <Star className='star' data-test='star' /> : <Avatar data-test='avatar' /> }
       </IconContainer>
-      { programmingLanguage && <ProgrammingLanguage>{programmingLanguage}</ProgrammingLanguage>}
+      { programmingLanguage && <ProgrammingLanguage data-test='language' >{programmingLanguage}</ProgrammingLanguage>}
     </ExtraInfoContainer>
   </ListItemContainer>
   )
