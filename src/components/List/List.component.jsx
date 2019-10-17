@@ -8,14 +8,15 @@ import PropTypes from 'prop-types';
 const List = ({ listData }) => {
 
   return(
-    <ListContainer>
-      <SearchBar />
+    <ListContainer data-test='list'>
+      <SearchBar data-test='search-bar' />
       {listData.map( (item, idx) => {
         const { name, language, clone_url, stargazers_count, description, } = item;
         
         return clone_url 
           ? <Link to={`/${name}`} style={{textDecoration: 'none', color: 'inherit'}} >
-              <ListItem 
+              <ListItem
+                data-test='list-item'
                 key={idx} 
                 description={description} 
                 programmingLanguage={language} 
@@ -24,7 +25,8 @@ const List = ({ listData }) => {
                 iconInfo={stargazers_count}
               />
             </Link>
-          : <ListItem 
+          : <ListItem
+              data-test='list-item'
               key={idx}
               description={item.commit ? item.commit.message : 'no commit message'}
               iconInfo={item.author ? item.author.login : 'no commit author'}

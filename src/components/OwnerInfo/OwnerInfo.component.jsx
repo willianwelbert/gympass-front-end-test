@@ -12,21 +12,21 @@ import {
 const OwnerInfo = (props) => {
   const { repoCount, repoName, lastCommiter } = props
   return (
-    <InfoContainer >
+    <InfoContainer data-test='owner-info' >
       <Info>
         {repoName !== ''
-          ? <Caption>repository:</Caption>
-          : <Caption>owner:</Caption>
+          ? <Caption data-test='caption' >repository:</Caption>
+          : <Caption data-test='caption' >owner:</Caption>
         }
         {repoName ? repoName : `reactjs`}
       </Info>
       <Link to='/' style={{textDecoration: 'none', color: 'inherit'}} >
-        <OwnerAvatar style={{ backgroundImage: `url("https://avatars0.githubusercontent.com/u/6412038?s=200&v=4")` }} />
+        <OwnerAvatar data-test='owner-avatar' style={{ backgroundImage: `url("https://avatars0.githubusercontent.com/u/6412038?s=200&v=4")` }} />
       </Link>
       <Info>
         {lastCommiter
-          ? <Caption>last commiter:</Caption>
-          : <Caption>public repos:</Caption>
+          ? <Caption data-test='caption' >last commiter:</Caption>
+          : <Caption data-test='caption' >public repos:</Caption>
         }
         {lastCommiter ? lastCommiter : repoCount}
       </Info>

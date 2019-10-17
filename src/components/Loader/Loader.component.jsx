@@ -14,12 +14,12 @@ export const Loader = ({ displayError }) => {
   };
 
   return (
-    <LoaderContainer>
+    <LoaderContainer data-test='loader' >
       <Lottie options={defaultOptions} height='300px' />
       {displayError ? (
-        <LoaderCaption>Oops...</LoaderCaption>
+        <LoaderCaption data-test='loader-caption'>Oops...</LoaderCaption>
       ) : (
-        <LoaderCaption>
+        <LoaderCaption data-test='loader-caption'>
           working <span style={{ color: '#18ccc0' }}> (out) </span> on it...
         </LoaderCaption>
       )}
