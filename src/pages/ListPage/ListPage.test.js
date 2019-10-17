@@ -5,7 +5,17 @@ import { findByTestAttr } from '../../testUtils';
 import { ListPage } from './ListPage.component';
 
 describe('renders page and components properly', () => {
-  let defaultProps = {error: false, reposList: []};
+  let defaultProps = {
+    error: false, 
+    reposData : { 
+      repoCount : 0, 
+      reposList : []
+    },
+    commitsData : {
+      lastCommiter : 'John Doe',
+      commits: []
+    }
+  };
 
   const setup = (props = {}) => {
     const setupProps = { ...defaultProps, ...props };
@@ -24,33 +34,44 @@ describe('renders page and components properly', () => {
     expect(LoaderComponent.length).toBe(1);
   });
 
-  test('renders error loader if error props are passed', () => {
-    const wrapper = setup({ error: true });
-    const LoaderComponent = findByTestAttr(wrapper, 'loader');
-    expect(LoaderComponent.prop('displayError')).toBe(true);
-  });
-
   test('does NOT render loader if data props are passed', () => {
-    const wrapper = setup({ reposList: ['test'] });
+    const wrapper = setup({
+      itemType : 'repo', 
+      reposData : { 
+        reposList : ['a', 'b']
+      } });
     const LoaderComponent = findByTestAttr(wrapper, 'loader');
     expect(LoaderComponent.length).toBe(0);
   });
 
-  test('render error message if props are passed', () => {
-    const wrapper = setup({ error: true });
-    const ErrorMessage = findByTestAttr(wrapper, 'error-message');
-    expect(ErrorMessage.length).toBe(1);
-  });
-
-  test('does NOT render an empty error message', () => {
-    const wrapper = setup({ error: true });
-    const ErrorMessage = findByTestAttr(wrapper, 'error-message');
-    expect(ErrorMessage.prop('message')).not.toBe('');
-  });
-
   test('renders owner info/header after data fetch', () => {
-    const wrapper = setup({ reposList: ['testRepo'] });
+    const wrapper = setup({
+      itemType : 'repo', 
+      reposData : { 
+        reposList : ['a', 'b']
+      } });
     const HeaderComponent = findByTestAttr(wrapper, 'owner-info');
     expect(HeaderComponent.length).toBe(1);
   });
+
+  test('renders list with repo props when type is repo', () => {
+    const wrapper = setup({
+      itemType : 'repo', 
+      reposData : { 
+        reposList : ['a', 'b']
+      } });
+    const ListComponent = findByTestAttr(wrapper, 'repository-list');
+    expect(ListComponent.length).toBe(1);
+  });
+
+  test('renders list with commits props when type is not repo', () => {
+    const wrapper = setup({
+      commitsData : {
+        commits : ['first', 'second']
+      }
+    });
+    const ListComponent = findByTestAttr(wrapper, 'commits-list');
+    expect(ListComponent.length).toBe(1);
+  })
+
 });

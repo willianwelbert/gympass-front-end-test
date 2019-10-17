@@ -50,7 +50,7 @@ export const ListPage = ( props ) => {
           <OwnerInfo data-test='owner-info'
             repoCount={repoCount}
            />
-          <List listData={reposList} />
+          <List listData={reposList} data-test='repository-list' />
         </>
       )}
     </PageContainer>
@@ -72,7 +72,7 @@ export const ListPage = ( props ) => {
             repoName={repoURLParam}
             lastCommiter={lastCommiter}
            />
-          <List listData={commits} />
+          <List listData={commits} data-test='commits-list' />
         </>
       )}
     </PageContainer>
