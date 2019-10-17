@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import {ListContainer} from './List.styles';
 import SearchBar from '../SearchBar/SearchBar.component';
 import ListItem from '../ListItem/ListItem.component';
@@ -13,14 +14,16 @@ const List = ({ listData }) => {
         const { name, language, clone_url, stargazers_count, description, } = item;
         
         return clone_url 
-          ? <ListItem 
-              key={idx} 
-              description={description} 
-              programmingLanguage={language} 
-              title={name} 
-              itemType='repo'
-              iconInfo={stargazers_count}
-            /> 
+          ? <Link to={`/${name}`} style={{textDecoration: 'none', color: 'inherit'}} >
+              <ListItem 
+                key={idx} 
+                description={description} 
+                programmingLanguage={language} 
+                title={name} 
+                itemType='repo'
+                iconInfo={stargazers_count}
+              />
+            </Link>
           : <ListItem 
               key={idx}
               description={item.commit ? item.commit.message : 'no commit message'}

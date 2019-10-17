@@ -25,6 +25,7 @@ export const ListPage = ( props ) => {
   
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     itemType === 'repo'
       ? fetchReposStartAsync()
       : fetchCommitsStartAsync(repoURLParam);

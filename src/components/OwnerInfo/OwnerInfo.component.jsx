@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import {
@@ -19,7 +20,9 @@ const OwnerInfo = (props) => {
         }
         {repoName ? repoName : `reactjs`}
       </Info>
-      <OwnerAvatar style={{ backgroundImage: `url("https://avatars0.githubusercontent.com/u/6412038?s=200&v=4")` }} />
+      <Link to='/' style={{textDecoration: 'none', color: 'inherit'}} >
+        <OwnerAvatar style={{ backgroundImage: `url("https://avatars0.githubusercontent.com/u/6412038?s=200&v=4")` }} />
+      </Link>
       <Info>
         {lastCommiter
           ? <Caption>last commiter:</Caption>
