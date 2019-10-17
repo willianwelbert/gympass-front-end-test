@@ -11,7 +11,7 @@ export const fetchCommitsSuccess = commitsList => ({
 });
 
 export const fetchCommitsFailure = errorMessage => ({
-  type: actionTypes.FETCH_COMMITS_FAILURE,
+  type: actionTypes.TOGGLE_ERROR,
   payload: errorMessage
 });
 
@@ -34,7 +34,7 @@ export const fetchCommitsStartAsync = repoName => {
       })
       .catch( error => {
         console.log(error);
-        dispatch(fetchCommitsFailure(error))
+        dispatch(fetchCommitsFailure(error.response.data.message))
       })
   }
 }

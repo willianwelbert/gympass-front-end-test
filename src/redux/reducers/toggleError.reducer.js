@@ -1,7 +1,8 @@
 import { actionTypes } from '../actionTypes';
 
 const INITIAL_STATE = {
-  error: false
+  error: false,
+  errorMessage: 'error fetching data, please try refreshing the page'
 };
 
 const toggleError = (state = INITIAL_STATE, action) => {
@@ -9,7 +10,8 @@ const toggleError = (state = INITIAL_STATE, action) => {
     case actionTypes.TOGGLE_ERROR:
       return {
         ...state,
-        error: true
+        error: true,
+        errorMessage: action.payload
       };
     default:
       return state;

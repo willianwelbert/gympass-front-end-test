@@ -17,9 +17,9 @@ export const ListPage = ( props ) => {
     repoURLParam,
     fetchReposStartAsync, 
     fetchCommitsStartAsync,
-    error = false,
     reposData : { repoCount, reposList},
-    commitsData : {lastCommiter, commits}
+    commitsData : {lastCommiter, commits},
+    error : { error, errorMessage }
     } = props;
   
   
@@ -39,7 +39,7 @@ export const ListPage = ( props ) => {
           <Loader data-test='loader' displayError />
           <ErrorMessage
             data-test='error-message'
-            message='error fetching data, please try refreshing the page'
+            message={errorMessage}
           />
         </>
       ) : reposList.length === 0 ? (
@@ -60,7 +60,7 @@ export const ListPage = ( props ) => {
           <Loader data-test='loader' displayError />
           <ErrorMessage
             data-test='error-message'
-            message='error fetching data, please try refreshing the page'
+            message={errorMessage}
           />
         </>
       ) : commits.length === 0 ? (
@@ -79,8 +79,8 @@ export const ListPage = ( props ) => {
 };
 
 const mapStateToProps = state => {
-  const { commitsData, reposData } = state;
-  return { commitsData, reposData }
+  const { commitsData, reposData, error } = state;
+  return { commitsData, reposData, error }
 };
 
 const mapDispatchToProps = dispatch => {

@@ -11,7 +11,7 @@ export const fetchReposSuccess = reposList => ({
 });
 
 export const fetchReposFailure = errorMessage => ({
-  type: actionTypes.FETCH_DATA_FAILURE,
+  type: actionTypes.TOGGLE_ERROR,
   payload: errorMessage
 });
 
@@ -39,7 +39,7 @@ export const fetchReposStartAsync = () => {
         
       })
       .catch(error => {
-        dispatch(fetchReposFailure(error));
+        dispatch(fetchReposFailure(error.response.data.message));
       });
   };
 };
