@@ -1,4 +1,5 @@
 import { actionTypes } from '../actionTypes';
+import {orderAscending} from '../actions/filterList'
 import axios from 'axios';
 
 export const fetchReposStart = () => ({
@@ -27,14 +28,13 @@ export const fetchReposStartAsync = () => {
     axios
       .get('https://api.github.com/users/reactjs')
       .then( response => {
-        console.log('general data', response);
         dispatch(setRepoCount(response.data.public_repos));
       } )
 
     axios
       .get('https://api.github.com/users/reactjs/repos')
       .then(response => {
-        console.log(response.data);
+        dispatch(orderAscending())
         dispatch(fetchReposSuccess(response.data));
         
       })

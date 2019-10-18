@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {orderAscending, orderDescending} from '../../redux/actions/filterList';
+import {orderReposFromAtoZ, orderReposFromZtoA} from '../../redux/actions/filterList';
 
 import {ReactComponent as MagnifierIcon} from './magnifier.svg';
 import {ReactComponent as AtoZ} from './alphabetical-asc.svg';
@@ -59,8 +59,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    orderInAscending : () => dispatch(orderAscending()),
-    orderInDescending : () => dispatch(orderDescending())
+    orderInAscending : () => dispatch(orderReposFromAtoZ()),
+    orderInDescending : () => dispatch(orderReposFromZtoA())
   }
 }
 

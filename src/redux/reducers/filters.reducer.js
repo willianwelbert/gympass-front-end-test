@@ -11,7 +11,7 @@ const filterList = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         ascending: true,
-        descending: false
+        descending: false,
       };
     case actionTypes.TOGGLE_DESCENDING_ORDERING:
       return {
