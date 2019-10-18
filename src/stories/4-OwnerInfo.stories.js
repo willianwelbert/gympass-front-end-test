@@ -1,18 +1,20 @@
 import React from 'react';
 import OwnerInfo from '../components/OwnerInfo/OwnerInfo.component';
+import StoryRouter from 'storybook-react-router';
 
 export default {
   component: OwnerInfo,
-  title: 'Repo Owner Info'
+  title: 'Repo Owner Info',
+  decorators: [ StoryRouter() ]
 }
 
 const ownerProps = {
-  avatarImg: 'https://avatars3.githubusercontent.com/u/6412038?v=4',
-  repoCount: 75
+  repoCount: 75,
+  repoName: '',
+  lastCommiter: ''
 };
 
 const repoProps = {
-  avatarImg: 'https://avatars3.githubusercontent.com/u/6412038?v=4',
   repoCount: 75,
   repoName: 'nice repo',
   lastCommiter: 'John Doe'
