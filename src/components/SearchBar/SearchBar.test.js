@@ -26,7 +26,7 @@ test('renders form', () => {
 describe('ascending and descending filters', () => {
   
   test('renders filters', () => {
-    const wrapper = setup();
+    const wrapper = setup({itemType : 'repo'});
     const AtoZComponent = findByTestAttr(wrapper, 'a-to-z');
     const ZtoAComponent = findByTestAttr(wrapper, 'z-to-a');
     expect(AtoZComponent.length).toBe(1);
