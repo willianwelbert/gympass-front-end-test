@@ -18,7 +18,7 @@ export const ListPage = ( props ) => {
     fetchReposStartAsync, 
     fetchCommitsStartAsync,
     reposData : { repoCount, reposList},
-    commitsData : {lastCommiter, commits},
+    commitsData : {lastCommiter, commits, isFetching},
     error : { error, errorMessage }
     } = props;
   
@@ -64,7 +64,7 @@ export const ListPage = ( props ) => {
             message={errorMessage}
           />
         </>
-      ) : commits.length === 0 ? (
+      ) : commits.length === 0 || isFetching ? (
         <Loader data-test='loader' />
       ) : (
         <>
