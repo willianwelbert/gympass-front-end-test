@@ -14,15 +14,14 @@ const List = ({ listData }) => {
         const { name, language, clone_url, stargazers_count, description, } = item;
         
         return clone_url 
-          ? <Link to={`/${name}`} style={{textDecoration: 'none', color: 'inherit'}} >
+          ? <Link key={idx} to={`/${name}`} style={{textDecoration: 'none', color: 'inherit'}} >
               <ListItem
-                data-test='list-item'
-                key={idx} 
+                data-test='list-item' 
                 description={description} 
                 programmingLanguage={language} 
                 title={name} 
                 itemType='repo'
-                iconInfo={stargazers_count}
+                iconInfo={stargazers_count.toString()}
               />
             </Link>
           : <ListItem
