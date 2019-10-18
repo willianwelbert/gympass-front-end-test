@@ -21,13 +21,11 @@ export const setRepoCount = repoCount => ({
   payload: repoCount
 });
 
-export const setFilteredRepos = filteredRepos => ({
-  type: actionTypes.SET_FILTERED_REPOS,
-  payload: filteredRepos
-})
-
 export const fetchReposStartAsync = () => {
-  return dispatch => {
+  return (dispatch, getState) => {
+
+    if(getState().reposData.reposList.length !== 0 ) return
+
     dispatch(fetchReposStart());
 
     axios

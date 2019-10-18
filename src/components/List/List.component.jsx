@@ -5,12 +5,16 @@ import SearchBar from '../SearchBar/SearchBar.component';
 import ListItem from '../ListItem/ListItem.component';
 import PropTypes from 'prop-types';
 
-export const List = ({ listData, itemType }) => {
+export const List = ({ listData, filteredListData, itemType }) => {
+
+  let showData
+  
+  filteredListData.length > 0 ? showData = filteredListData : showData = listData
 
   return(
     <ListContainer data-test='list'>
       <SearchBar data-test='search-bar' itemType={itemType} />
-      {listData.map( (item, idx) => {
+      {showData.map( (item, idx) => {
         const { name, language, clone_url, stargazers_count, description, } = item;
         
         return clone_url 

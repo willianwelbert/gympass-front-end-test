@@ -17,4 +17,6 @@ export const LoaderCaption = styled.h3`
 export const AnimationCredits = styled.span`
   font-size: 11px;
   text-align: center;
+  display: block;
+  padding: 3rem 0;
 `

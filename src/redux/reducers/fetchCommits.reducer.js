@@ -2,6 +2,7 @@ import {actionTypes} from '../actionTypes';
 
 const INITIAL_STATE = {
   commits: [],
+  filteredCommits : []
 }
 
 const fetchCommit = ( state=INITIAL_STATE, action ) => {
@@ -20,7 +21,7 @@ const fetchCommit = ( state=INITIAL_STATE, action ) => {
     case actionTypes.SET_FILTERED_COMMITS:
       return {
         ...state,
-        commits: action.payload
+        filteredCommits: action.payload
       }
     case actionTypes.SET_LAST_COMMITER:
       return {

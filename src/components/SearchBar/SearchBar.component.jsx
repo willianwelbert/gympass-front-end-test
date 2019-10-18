@@ -9,10 +9,6 @@ import {ReactComponent as ZtoA} from './alphabetical-des.svg';
 
 import {SearchBarContainer, Magnifier, SearchForm, SearchInputField, OrderingIconsContainer} from './SearchBar.styles';
 
-const handleChange = evt => {
-  props.filterbySearch(evt.target.value)
-}
-
 export const SearchBar = ({
   ascending, 
   descending, 
@@ -20,11 +16,16 @@ export const SearchBar = ({
   orderInDescending, 
   reposList,
   commits,
-  itemType
+  itemType,
+  filterbySearch
 }) => {
 
   const activeOrdering = {
     fill: '#222'
+  }
+
+  const handleChange = evt => {
+    filterbySearch(evt.target.value)
   }
 
   return(

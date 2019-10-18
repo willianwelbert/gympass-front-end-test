@@ -17,8 +17,8 @@ export const ListPage = ( props ) => {
     repoURLParam,
     fetchReposStartAsync, 
     fetchCommitsStartAsync,
-    reposData : { repoCount, reposList},
-    commitsData : {lastCommiter, commits},
+    reposData : { repoCount, reposList, filteredReposList},
+    commitsData : {lastCommiter, commits, filteredCommits},
     error : { error, errorMessage }
     } = props;
   
@@ -43,14 +43,14 @@ export const ListPage = ( props ) => {
             message={errorMessage}
           />
         </>
-      ) : reposList.length === 0 || props.reposData.isFetching ? (
+      ) : props.reposData.isFetching ? (
         <Loader data-test='loader' />
       ) : (
         <>
           <OwnerInfo data-test='owner-info'
             repoCount={repoCount}
            />
-          <List listData={reposList} data-test='repository-list' itemType='repo' />
+          <List listData={reposList} filteredListData={filteredReposList} data-test='repository-list' itemType='repo' />
         </>
       )}
     </PageContainer>
@@ -64,7 +64,7 @@ export const ListPage = ( props ) => {
             message={errorMessage}
           />
         </>
-      ) : commits.length === 0 || props.commitsData.isFetching ? (
+      ) : props.commitsData.isFetching ? (
         <Loader data-test='loader' />
       ) : (
         <>
@@ -72,7 +72,7 @@ export const ListPage = ( props ) => {
             repoName={repoURLParam}
             lastCommiter={lastCommiter}
            />
-          <List listData={commits} data-test='commits-list' itemType='commits' />
+          <List listData={commits} filteredListData={filteredCommits} data-test='commits-list' itemType='commits' />
         </>
       )}
     </PageContainer>

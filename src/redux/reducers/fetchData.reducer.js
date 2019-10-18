@@ -2,6 +2,7 @@ import { actionTypes } from '../actionTypes';
 
 const INITIAL_STATE = {
   reposList: [],
+  filteredReposList: [],
   isFetching: false,
 };
 
@@ -21,7 +22,7 @@ const fetchData = (state = INITIAL_STATE, action) => {
     case actionTypes.SET_FILTERED_REPOS:
       return {
         ...state,
-        reposList : action.payload
+        filteredReposList : action.payload
       }
     case actionTypes.SET_REPO_COUNT:
       return {
