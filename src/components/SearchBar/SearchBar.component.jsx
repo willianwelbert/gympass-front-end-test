@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {orderAscending, orderDescending} from '../../redux/actions/filterList';
 
 import {ReactComponent as MagnifierIcon} from './magnifier.svg';
 import {ReactComponent as AtoZ} from './alphabetical-asc.svg';
@@ -7,26 +9,49 @@ import {ReactComponent as ZtoA} from './alphabetical-des.svg';
 
 import {SearchBarContainer, Magnifier, SearchForm, SearchInputField, OrderingIconsContainer} from './SearchBar.styles';
 
-const SearchBar = ({ascending, descending}) => {
+export const SearchBar = ({ascending, descending, orderInAscending, orderInDescending}) => {
 
   const activeOrdering = {
     fill: '#222'
   }
 
   return(
-    <SearchBarContainer>
-      <Magnifier>
-        <MagnifierIcon />
-      </Magnifier>
-      <SearchForm>
-        <SearchInputField />
+    <SearchBarContainer data-test='search-bar' >
+      <SearchForm data-test='search-form' >
+        <Magnifier htmlFor='searchField' >
+          <MagnifierIcon />
+        </Magnifier>
+        <SearchInputField id='searchField' />
       </SearchForm>
       <OrderingIconsContainer>
-        { ascending ? <AtoZ style={activeOrdering} /> : <AtoZ /> }
-        { descending ? <ZtoA style={activeOrdering} /> : <ZtoA />}
+        { ascending 
+          ? <AtoZ style={activeOrdering} data-test='a-to-z' onClick={orderInAscending} /> 
+          : <AtoZ data-test='a-to-z' onClick={orderInAscending} /> 
+        }
+        { descending 
+          ? <ZtoA style={activeOrdering} data-test='z-to-a' onClick={orderInDescending} /> 
+          : <ZtoA data-test='z-to-a' onClick={orderInDescending} />
+        }
       </OrderingIconsContainer>
     </SearchBarContainer>
   )
 }
 
-export default SearchBar;
+SearchBar.propTypes = {
+  ascending : PropTypes.bool,
+  descemdomg : PropTypes.bool
+}
+
+const mapStateToProps = state => {
+  const { ascending, descending } = state.filter
+  return { ascending, descending }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    orderInAscending : () => dispatch(orderAscending()),
+    orderInDescending : () => dispatch(orderDescending())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);

@@ -12,7 +12,7 @@ export const SearchBarContainer = styled.div`
   align-items: center;
 `
 
-export const Magnifier = styled.div`
+export const Magnifier = styled.label`
   display: inline-block;
   width: 5%;
   padding: 0 0.5rem;
@@ -23,9 +23,10 @@ export const Magnifier = styled.div`
 `
 
 export const SearchForm = styled.form`
-  width: 80%;
+  display: flex;
+  flex-direction: row;
+  width: 85%;
   margin: 0 auto;
-  width: 70%;
   min-height: 1.5rem;
 `
 
@@ -34,8 +35,9 @@ export const SearchInputField = styled.input`
   font-size: 1rem;
   letter-spacing: 1px;
   border: none;
-  width: 100%;
+  width: 90%;
   min-height: 1.4rem;
+  margin-left: 1.5rem;
 `
 
 export const OrderingIconsContainer = styled.div`
