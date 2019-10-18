@@ -9,7 +9,15 @@ import {ReactComponent as ZtoA} from './alphabetical-des.svg';
 
 import {SearchBarContainer, Magnifier, SearchForm, SearchInputField, OrderingIconsContainer} from './SearchBar.styles';
 
-export const SearchBar = ({ascending, descending, orderInAscending, orderInDescending}) => {
+export const SearchBar = ({
+  ascending, 
+  descending, 
+  orderInAscending, 
+  orderInDescending, 
+  reposList,
+  commits,
+  itemType
+}) => {
 
   const activeOrdering = {
     fill: '#222'
@@ -23,7 +31,7 @@ export const SearchBar = ({ascending, descending, orderInAscending, orderInDesce
         </Magnifier>
         <SearchInputField id='searchField' />
       </SearchForm>
-      <OrderingIconsContainer>
+      {itemType === 'repo' && <OrderingIconsContainer>
         { ascending 
           ? <AtoZ style={activeOrdering} data-test='a-to-z' onClick={orderInAscending} /> 
           : <AtoZ data-test='a-to-z' onClick={orderInAscending} /> 
@@ -32,7 +40,7 @@ export const SearchBar = ({ascending, descending, orderInAscending, orderInDesce
           ? <ZtoA style={activeOrdering} data-test='z-to-a' onClick={orderInDescending} /> 
           : <ZtoA data-test='z-to-a' onClick={orderInDescending} />
         }
-      </OrderingIconsContainer>
+      </OrderingIconsContainer>}
     </SearchBarContainer>
   )
 }
@@ -43,8 +51,10 @@ SearchBar.propTypes = {
 }
 
 const mapStateToProps = state => {
-  const { ascending, descending } = state.filter
-  return { ascending, descending }
+  const { ascending, descending } = state.filter;
+  const { reposList } = state.reposData;
+  const { commits } = state.commitsData;
+  return { ascending, descending, reposList, commits }
 }
 
 const mapDispatchToProps = dispatch => {

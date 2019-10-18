@@ -1,7 +1,7 @@
 import {actionTypes} from '../actionTypes';
 
 const INITIAL_STATE = {
-  ascending: false,
+  ascending: true,
   descending: false,
 };
 
@@ -10,13 +10,13 @@ const filterList = (state = INITIAL_STATE, action) => {
     case actionTypes.TOGGLE_ASCENDING_ORDERING:
       return {
         ...state,
-        ascending: !state.ascending,
+        ascending: true,
         descending: false
       };
     case actionTypes.TOGGLE_DESCENDING_ORDERING:
       return {
         ...state,
-        descending: !state.descending,
+        descending: true,
         ascending: false
       };
     default:

@@ -3,7 +3,6 @@ import { actionTypes } from '../actionTypes';
 const INITIAL_STATE = {
   reposList: [],
   isFetching: false,
-  errorMessage: ''
 };
 
 const fetchData = (state = INITIAL_STATE, action) => {
