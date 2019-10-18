@@ -13,3 +13,8 @@ export const LoaderCaption = styled.h3`
   color: #ff5a59;
   margin: 0;
 `;
+
+export const AnimationCredits = styled.span`
+  font-size: 11px;
+  text-align: center;
+`

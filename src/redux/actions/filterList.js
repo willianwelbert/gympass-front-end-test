@@ -10,6 +10,11 @@ export const orderDescending = () => ({
   type: actionTypes.TOGGLE_DESCENDING_ORDERING
 })
 
+export const setFilteredRepos = filteredRepos => ({
+  type: actionTypes.SET_FILTERED_REPOS,
+  payload: filteredRepos
+})
+
 export const orderReposFromAtoZ = () => {
   return (dispatch, getState) => {
     dispatch(orderAscending());
@@ -28,7 +33,7 @@ export const orderReposFromAtoZ = () => {
 
     } )
 
-    dispatch(fetchReposSuccess(orderedRepos))
+    dispatch(setFilteredRepos(orderedRepos))
 
   }
 }
@@ -51,7 +56,21 @@ export const orderReposFromZtoA = () => {
 
     } )
 
-    dispatch(fetchReposSuccess(orderedRepos))
+    dispatch(setFilteredRepos(orderedRepos))
+
+  }
+}
+
+export const filterRepoBySearchTerm = (searchTerm) => {
+  return (dispatch, getState) => {
+
+    const repos = getState().reposData.reposList;
+
+    const filteredResults = repos.filter( repo => {
+      return repo.name.includes(searchTerm) || repo.description.includes(searchTerm) 
+    })
+
+    dispatch(setFilteredRepos(filteredResults))
 
   }
 }

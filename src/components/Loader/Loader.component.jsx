@@ -4,7 +4,7 @@ import Lottie from 'react-lottie';
 import loaderAnimation from './loader-animation.json';
 import errorAnimation from './error-animation.json';
 
-import { LoaderContainer, LoaderCaption } from './Loader.styles';
+import { LoaderContainer, LoaderCaption, AnimationCredits } from './Loader.styles';
 
 export const Loader = ({ displayError }) => {
   const defaultOptions = {
@@ -19,9 +19,12 @@ export const Loader = ({ displayError }) => {
       {displayError ? (
         <LoaderCaption data-test='loader-caption'>Oops...</LoaderCaption>
       ) : (
+        <>
         <LoaderCaption data-test='loader-caption'>
           working <span style={{ color: '#18ccc0' }}> (out) </span> on it...
         </LoaderCaption>
+        <AnimationCredits>animação por Bruno Alves / lottiefiles</AnimationCredits>
+        </>
       )}
     </LoaderContainer>
   );

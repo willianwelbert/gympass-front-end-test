@@ -18,13 +18,11 @@ const fetchData = (state = INITIAL_STATE, action) => {
         isFetching: false,
         reposList: action.payload
       };
-    case actionTypes.FETCH_DATA_FAILURE:
+    case actionTypes.SET_FILTERED_REPOS:
       return {
         ...state,
-        error: true,
-        isFetching: false,
-        errorMessage: action.payload
-      };
+        reposList : action.payload
+      }
     case actionTypes.SET_REPO_COUNT:
       return {
         ...state,

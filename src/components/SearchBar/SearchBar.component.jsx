@@ -1,13 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {orderReposFromAtoZ, orderReposFromZtoA} from '../../redux/actions/filterList';
+import {orderReposFromAtoZ, orderReposFromZtoA, filterRepoBySearchTerm} from '../../redux/actions/filterList';
 
 import {ReactComponent as MagnifierIcon} from './magnifier.svg';
 import {ReactComponent as AtoZ} from './alphabetical-asc.svg';
 import {ReactComponent as ZtoA} from './alphabetical-des.svg';
 
 import {SearchBarContainer, Magnifier, SearchForm, SearchInputField, OrderingIconsContainer} from './SearchBar.styles';
+
+const handleChange = evt => {
+  props.filterbySearch(evt.target.value)
+}
 
 export const SearchBar = ({
   ascending, 
@@ -29,7 +33,7 @@ export const SearchBar = ({
         <Magnifier htmlFor='searchField' >
           <MagnifierIcon />
         </Magnifier>
-        <SearchInputField id='searchField' />
+        <SearchInputField id='searchField' onChange={handleChange} />
       </SearchForm>
       {itemType === 'repo' && <OrderingIconsContainer>
         { ascending 
@@ -60,7 +64,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     orderInAscending : () => dispatch(orderReposFromAtoZ()),
-    orderInDescending : () => dispatch(orderReposFromZtoA())
+    orderInDescending : () => dispatch(orderReposFromZtoA()),
+    filterbySearch : searchTerm => dispatch(filterRepoBySearchTerm(searchTerm))
   }
 }
 

@@ -17,12 +17,11 @@ const fetchCommit = ( state=INITIAL_STATE, action ) => {
         isFetching: false,
         commits: action.payload,
       };
-    case actionTypes.FETCH_COMMITS_FAILURE:
+    case actionTypes.SET_FILTERED_COMMITS:
       return {
         ...state,
-        error: true,
-        message: action.payload,
-      };
+        commits: action.payload
+      }
     case actionTypes.SET_LAST_COMMITER:
       return {
         ...state,
