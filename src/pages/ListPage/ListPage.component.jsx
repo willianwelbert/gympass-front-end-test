@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import InfiniteScroll from 'react-infinite-scroller';
 
 import Loader from '../../components/Loader/Loader.component';
 import OwnerInfo from '../../components/OwnerInfo/OwnerInfo.component';
@@ -8,7 +9,7 @@ import ErrorMessage from '../../components/Error/Error.component';
 
 import { PageContainer } from './ListPage.styles';
 import { fetchReposStartAsync } from '../../redux/actions/fetchRepos';
-import { fetchCommitsStartAsync } from '../../redux/actions/fetchCommits';
+import { fetchCommitsStartAsync, fetchMoreCommitsAsync } from '../../redux/actions/fetchCommits';
 
 export const ListPage = ( props ) => {
   
@@ -17,15 +18,16 @@ export const ListPage = ( props ) => {
     repoURLParam,
     fetchReposStartAsync, 
     fetchCommitsStartAsync,
-    reposData : { repoCount, reposList, filteredReposList},
-    commitsData : {lastCommiter, commits, filteredCommits},
+    fetchMoreCommitsAsync,
+    reposData : { isFetchingRepos, repoCount, reposList, filteredReposList},
+    commitsData : {isFetchingCommits, lastCommiter, commits, filteredCommits},
     error : { error, errorMessage }
     } = props;
   
   
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
     itemType === 'repo'
       ? fetchReposStartAsync()
       : fetchCommitsStartAsync(repoURLParam);
@@ -43,7 +45,7 @@ export const ListPage = ( props ) => {
             message={errorMessage}
           />
         </>
-      ) : props.reposData.isFetching ? (
+      ) : isFetchingRepos ? (
         <Loader data-test='loader' />
       ) : (
         <>
@@ -64,7 +66,7 @@ export const ListPage = ( props ) => {
             message={errorMessage}
           />
         </>
-      ) : props.commitsData.isFetching ? (
+      ) : isFetchingCommits ? (
         <Loader data-test='loader' />
       ) : (
         <>
@@ -72,7 +74,14 @@ export const ListPage = ( props ) => {
             repoName={repoURLParam}
             lastCommiter={lastCommiter}
            />
-          <List listData={commits} filteredListData={filteredCommits} data-test='commits-list' itemType='commits' />
+           <InfiniteScroll
+            pageStart={0}
+            loadMore={(page) => fetchMoreCommitsAsync(repoURLParam, page)}
+            hasMore={true}
+            loader={<div style={{textAlign: 'center'}} key={0}>Loading ...</div>}
+          >
+            <List listData={commits} filteredListData={filteredCommits} data-test='commits-list' itemType='commits' />
+          </InfiniteScroll>
         </>
       )}
     </PageContainer>
@@ -88,6 +97,7 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchReposStartAsync: () => dispatch(fetchReposStartAsync()),
     fetchCommitsStartAsync: repoURLParam => dispatch(fetchCommitsStartAsync(repoURLParam)),
+    fetchMoreCommitsAsync : (repoURLParam, pageNumber) => dispatch(fetchMoreCommitsAsync(repoURLParam, pageNumber))
   };
 };
 

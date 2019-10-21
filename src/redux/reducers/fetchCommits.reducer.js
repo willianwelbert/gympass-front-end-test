@@ -2,7 +2,8 @@ import {actionTypes} from '../actionTypes';
 
 const INITIAL_STATE = {
   commits: [],
-  filteredCommits : []
+  filteredCommits : [],
+  isFetchingCommits : false
 }
 
 const fetchCommit = ( state=INITIAL_STATE, action ) => {
@@ -10,12 +11,12 @@ const fetchCommit = ( state=INITIAL_STATE, action ) => {
     case actionTypes.FETCH_COMMITS_START:
       return {
         ...state,
-        isFetching: true
+        isFetchingCommits: true
       };
     case actionTypes.FETCH_COMMITS_SUCCESS:
       return  {
         ...state,
-        isFetching: false,
+        isFetchingCommits: false,
         commits: action.payload,
       };
     case actionTypes.SET_FILTERED_COMMITS:
@@ -27,6 +28,11 @@ const fetchCommit = ( state=INITIAL_STATE, action ) => {
       return {
         ...state,
         lastCommiter: action.payload,
+      }
+    case actionTypes.FETCH_MORE_COMMITS:
+      return {
+        ...state,
+        commits: state.commits.concat(action.payload)
       }
     default:
       return state;

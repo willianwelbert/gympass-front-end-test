@@ -9,15 +9,13 @@ describe('renders page and components properly', () => {
     error: false, 
     reposData : { 
       repoCount : 0, 
-      reposList : []
+      reposList : [],
+      isFetchingRepos : true
     },
     commitsData : {
       lastCommiter : 'John Doe',
       commits: [],
-      isFetching : true
-    },
-    reposData : {
-      isFetching : true
+      isFetchingCommits : true
     }
   };
 

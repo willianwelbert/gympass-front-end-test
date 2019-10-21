@@ -3,7 +3,7 @@ import { actionTypes } from '../actionTypes';
 const INITIAL_STATE = {
   reposList: [],
   filteredReposList: [],
-  isFetching: false,
+  isFetchingRepos: false,
 };
 
 const fetchData = (state = INITIAL_STATE, action) => {
@@ -11,12 +11,12 @@ const fetchData = (state = INITIAL_STATE, action) => {
     case actionTypes.FETCH_DATA_START:
       return {
         ...state,
-        isFetching: true
+        isFetchingRepos: true
       };
     case actionTypes.FETCH_DATA_SUCCESS:
       return {
         ...state,
-        isFetching: false,
+        isFetchingRepos: false,
         reposList: action.payload
       };
     case actionTypes.SET_FILTERED_REPOS:
