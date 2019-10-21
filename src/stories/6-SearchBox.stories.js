@@ -10,7 +10,7 @@ export const regular = () =>
   <SearchBar />
 
 export const ascendingActive = () =>
-  <SearchBar ascending />
+  <SearchBar ascending itemType='repo' />
 
 export const descendingActive = () =>
-  <SearchBar descending />
+  <SearchBar descending itemType='repo' />
