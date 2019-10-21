@@ -1,11 +1,10 @@
 {
   "name": "willianwelbert-gympass-front-end-test",
+  "license": "MIT",
   "version": "0.1.0",
   "private": false,
-  "homepage": "https://willianwelbert.github.io/gympass-front-end-test",
   "dependencies": {
     "axios": "^0.19.0",
-    "gh-pages": "^2.1.1",
     "prop-types": "^15.7.2",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
@@ -26,9 +25,7 @@
     "test": "rescripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
     "extends": "react-app"

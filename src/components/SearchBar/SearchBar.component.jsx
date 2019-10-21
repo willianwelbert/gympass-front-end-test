@@ -13,9 +13,7 @@ export const SearchBar = ({
   ascending, 
   descending, 
   orderInAscending, 
-  orderInDescending, 
-  reposList,
-  commits,
+  orderInDescending,
   itemType,
   filterbySearch
 }) => {
@@ -25,7 +23,7 @@ export const SearchBar = ({
   }
 
   const handleChange = evt => {
-    filterbySearch(evt.target.value)
+    filterbySearch(evt.target.value, itemType)
   }
 
   return(
@@ -66,7 +64,7 @@ const mapDispatchToProps = dispatch => {
   return {
     orderInAscending : () => dispatch(orderReposFromAtoZ()),
     orderInDescending : () => dispatch(orderReposFromZtoA()),
-    filterbySearch : searchTerm => dispatch(filterRepoBySearchTerm(searchTerm))
+    filterbySearch : (searchTerm, itemType) => dispatch(filterRepoBySearchTerm(searchTerm, itemType))
   }
 }
 

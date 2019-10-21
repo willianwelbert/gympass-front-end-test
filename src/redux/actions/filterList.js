@@ -73,15 +73,17 @@ export const filterRepoBySearchTerm = (searchTerm, itemType) => {
       ? searchBase = getState().reposData.reposList
       : searchBase = getState().commitsData.commits
 
+    searchTerm = searchTerm.toLowerCase();
+
     const filteredResults = searchBase.filter( item => {
       if(itemType === 'repo'){
         return searchTerm !== ''
-        ? item.name.includes(searchTerm) || item.description.includes(searchTerm) 
+        ? item.name.toLowerCase().includes(searchTerm) || item.description.toLowerCase().includes(searchTerm) 
         : item
       }
 
       return searchTerm !== ''
-        ? item.commit.message.includes(searchTerm)
+        ? item.commit.message.toLowerCase().includes(searchTerm)
         : item
     })
 
