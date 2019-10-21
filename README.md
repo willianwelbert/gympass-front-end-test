@@ -1,68 +1,67 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is my take on [Gympass' Front End Test](https://github.com/Gympass/front-end-coding-test) <br />
 
-## Available Scripts
+Check out the **[Live Demo](http://willianwelbert.github.io/gympass-front-end-test)**
 
-In the project directory, you can run:
+## General Approach
 
-### `npm start`
+  I chose to approach this project as two pages rendering a list of items. These items are either repositories or commits, depending on that variation the application renders using different props.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+  Repositories and commits come from `reactjs`'s account (instead of my own), since the quantity of information there is bigger, allowing me to deal with a more realistic scenario.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+### ES6 Features
 
-### `npm test`
+  As requested [here](https://github.com/Gympass/front-end-coding-test#solution), I explain two ES6+ features used in this project:
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  1 - Object Destructuring
+  Used in this project especially when referencing props is necessary along with nested objects:
 
-### `npm run build`
+  ```
+  const {
+    itemType,
+    repoURLParam,
+    reposData : { isFetchingRepos, repoCount, reposList, ...},
+    commitsData : {isFetchingCommits, lastCommiter, commits, ...},
+    error : { error, errorMessage }
+    } = props;
+  ```
+  Then **avoiding repetition**, making code **easier to read**, calling `itemType` instead of `props.itemType`, and more importantly calling `repoCount` instead of `props.reposData.repoCount` etc.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  
+  2 - Default Parameters
+  Whenever a function depends on parameters passed to it, a default parameter is passed along with their declaration:
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+  ```
+  export const fetchMoreCommitsAsync = (repoName, pageNumber = '2' ) => {
+    ...
+  }
+  ```
+  If the prop **pageNumber** is not passed at function call, **'2'** will be provided as default. This is an extra layer to avoid errors, improves readabilty of the code and makes the function more modular.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### Stack
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+* React / Hooks (useEffect);
+* React Router DOM
+* Redux
+* Redux Thunk
+* [React Lottie](https://github.com/chenqingspring/react-lottie) (for animations)
+* Styled Components
+* Storybook
+* Jest + Enzyme
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Components Layout
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+To check each component in isolation run `yarn storybook`, the source for those are in `src/stories`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Next Steps
 
-## Learn More
+If continued, I imagine that the following features could be implemented ~~(a.k.a I wish I had time for this)~~:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* Debounce
+  - Searching experience might be non-optimal since filters run on every key stroke, might become a performance issue
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* Integration Testing
 
-### Code Splitting
+## Please note
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Since I'm using `react-lottie`, testing is configured a little differently. If `yarn test` does not run as expected, please make sure that you have `@rescripts/cli` and `canvas-prebuilt` correctly installed as dev dependencies. For more information, check [this issue](https://github.com/pixijs/pixi.js/issues/4769).
