@@ -77,8 +77,9 @@ export const ListPage = ( props ) => {
            <InfiniteScroll
             pageStart={0}
             loadMore={(page) => fetchMoreCommitsAsync(repoURLParam, page)}
+            style={{width: '100vw'}}
             hasMore={true}
-            loader={<div style={{textAlign: 'center'}} key={0}>Loading ...</div>}
+            loader={<span style={{textAlign: 'center', width: '100px', margin: '0 auto'}} key={0}>Loading ...</span>}
           >
             <List listData={commits} filteredListData={filteredCommits} data-test='commits-list' itemType='commits' />
           </InfiniteScroll>

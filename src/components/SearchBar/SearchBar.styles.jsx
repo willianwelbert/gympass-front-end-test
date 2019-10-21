@@ -20,6 +20,9 @@ export const Magnifier = styled.label`
   & svg {
     fill: #bbb;
   }
+  @media (max-width: 400px ) {
+    display : none
+  }
 `
 
 export const SearchForm = styled.form`
@@ -37,17 +40,16 @@ export const SearchInputField = styled.input`
   border: none;
   width: 90%;
   min-height: 1.4rem;
-  margin-left: 1.5rem;
 `
 
 export const OrderingIconsContainer = styled.div`
-  width: 15%;
   max-width: 100px;
   display: flex;
   justify-content: space-around;
 
   & svg{
     fill: #999;
+    padding: 0 0.5rem;
   }
 `
 

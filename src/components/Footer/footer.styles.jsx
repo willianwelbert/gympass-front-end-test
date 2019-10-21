@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const FooterContainer = styled.footer`
   font-family: 'Open Sans', sans-serif;
-  width: 100%;
+  width: 100vw;
   position: fixed;
   bottom: 0;
   background-color: #fcfcfc;

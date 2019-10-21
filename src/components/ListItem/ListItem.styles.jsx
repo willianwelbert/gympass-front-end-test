@@ -2,14 +2,19 @@ import styled from 'styled-components';
 
 export const ListItemContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  width: 80%;
+  flex-wrap: wrap;
   margin: 0.5rem auto;
   background-color: #fcfcfc;
   border-bottom: 2px solid #eee;
   padding: 0.5rem;
   font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  @media (min-width: 450px){
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
 `
 
 export const TextContainer = styled.div`
@@ -23,11 +28,14 @@ export const ListItemTitle = styled.h4`
   display: block;
   width: 100%;
   margin: 0;
-  text-align: left;
+  text-align: center;
   font-size: 1.3rem;
   color: #FF5A49;
   font-weight: 700;
   padding: 0.5rem;
+  @media (min-width: 450px) {
+    text-align: left;
+  }
 `
 
 export const ListItemDescription = styled.p`
@@ -35,15 +43,18 @@ export const ListItemDescription = styled.p`
   line-height: 1.6rem;
   margin: 0;
   padding: 0.5rem;
+  text-align: center;
 `
 
 export const ExtraInfoContainer = styled.div`
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: 25%;
   padding: 0.5rem 0.7rem;
+  @media (min-width: 450px) {
+    align-items: flex-end
+  }
 `
 
 export const IconContainer = styled.div`

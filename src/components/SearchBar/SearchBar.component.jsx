@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {orderReposFromAtoZ, orderReposFromZtoA, filterRepoBySearchTerm} from '../../redux/actions/filterList';
@@ -25,6 +25,11 @@ export const SearchBar = ({
   const handleChange = evt => {
     filterbySearch(evt.target.value, itemType)
   }
+
+  //runs filter once at render, to avoid a filtered list when root route is reloaded (e.g. clicking the logo)
+  useEffect( () => {
+    filterbySearch('', itemType)
+  }, [filterbySearch, itemType])
 
   return(
     <SearchBarContainer data-test='search-bar' >
