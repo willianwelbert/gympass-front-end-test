@@ -1,6 +1,6 @@
 This is my take on [Gympass' Front End Test](https://github.com/Gympass/front-end-coding-test) <br />
 
-Check out the **[Live Demo](http://willianwelbert.github.io/gympass-front-end-test)**
+Check out the **[Live Demo](http://gympass-test.surge.sh/)**
 
 ## General Approach
 
