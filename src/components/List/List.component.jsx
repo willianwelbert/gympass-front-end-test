@@ -5,7 +5,7 @@ import SearchBar from '../SearchBar/SearchBar.component';
 import ListItem from '../ListItem/ListItem.component';
 import PropTypes from 'prop-types';
 
-export const List = ({ listData, filteredListData, itemType }) => {
+export const List = ({ listData, filteredListData = [], itemType }) => {
 
   let showData
   

@@ -13,7 +13,11 @@ describe('renders page and components properly', () => {
     },
     commitsData : {
       lastCommiter : 'John Doe',
-      commits: []
+      commits: [],
+      isFetching : true
+    },
+    reposData : {
+      isFetching : true
     }
   };
 
@@ -48,7 +52,8 @@ describe('renders page and components properly', () => {
     const wrapper = setup({
       itemType : 'repo', 
       reposData : { 
-        reposList : ['a', 'b']
+        reposList : ['a', 'b'],
+        isFetching : false
       } });
     const HeaderComponent = findByTestAttr(wrapper, 'owner-info');
     expect(HeaderComponent.length).toBe(1);
@@ -58,7 +63,8 @@ describe('renders page and components properly', () => {
     const wrapper = setup({
       itemType : 'repo', 
       reposData : { 
-        reposList : ['a', 'b']
+        reposList : ['a', 'b'],
+        isFetching : false
       } });
     const ListComponent = findByTestAttr(wrapper, 'repository-list');
     expect(ListComponent.length).toBe(1);
@@ -67,7 +73,8 @@ describe('renders page and components properly', () => {
   test('renders list with commits props when type is not repo', () => {
     const wrapper = setup({
       commitsData : {
-        commits : ['first', 'second']
+        commits : ['first', 'second'],
+        isFetching : false
       }
     });
     const ListComponent = findByTestAttr(wrapper, 'commits-list');
