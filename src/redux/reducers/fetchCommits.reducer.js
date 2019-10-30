@@ -3,7 +3,8 @@ import {actionTypes} from '../actionTypes';
 const INITIAL_STATE = {
   commits: [],
   filteredCommits : [],
-  isFetchingCommits : false
+  isFetchingCommits : false,
+  page : 2,
 }
 
 const fetchCommit = ( state=INITIAL_STATE, action ) => {
@@ -32,7 +33,8 @@ const fetchCommit = ( state=INITIAL_STATE, action ) => {
     case actionTypes.FETCH_MORE_COMMITS:
       return {
         ...state,
-        commits: state.commits.concat(action.payload)
+        commits: state.commits.concat(action.payload),
+        page : state.page + 1
       }
     default:
       return state;

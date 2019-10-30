@@ -64,7 +64,7 @@ export const orderReposFromZtoA = () => {
   }
 }
 
-export const filterRepoBySearchTerm = (searchTerm, itemType) => {
+export const filterBySearchTerm = (searchTerm, itemType) => {
   return (dispatch, getState) => {
 
     let searchBase
