@@ -43,7 +43,7 @@ export const ListItemDescription = styled.p`
   line-height: 1.6rem;
   margin: 0;
   padding: 0.5rem;
-  text-align: center;
+  text-align: left;
 `
 
 export const ExtraInfoContainer = styled.div`

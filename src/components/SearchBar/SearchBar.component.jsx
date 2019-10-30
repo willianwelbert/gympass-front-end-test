@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {orderReposFromAtoZ, orderReposFromZtoA, filterRepoBySearchTerm} from '../../redux/actions/filterList';
+import {orderReposFromAtoZ, orderReposFromZtoA, filterBySearchTerm} from '../../redux/actions/filterList';
 
 import {ReactComponent as MagnifierIcon} from './magnifier.svg';
 import {ReactComponent as AtoZ} from './alphabetical-asc.svg';
@@ -69,7 +69,7 @@ const mapDispatchToProps = dispatch => {
   return {
     orderInAscending : () => dispatch(orderReposFromAtoZ()),
     orderInDescending : () => dispatch(orderReposFromZtoA()),
-    filterbySearch : (searchTerm, itemType) => dispatch(filterRepoBySearchTerm(searchTerm, itemType))
+    filterbySearch : (searchTerm, itemType) => dispatch(filterBySearchTerm(searchTerm, itemType))
   }
 }
 
