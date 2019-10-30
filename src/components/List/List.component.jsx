@@ -43,7 +43,7 @@ export const List = ({ listData, filteredListData = [], itemType, handleLoadMore
             scrollThreshold={1}
             initialScrollY={0}
           >
-            {listData.map( (item, idx) => {
+            {showData.map( (item, idx) => {
               return <ListItem
                 data-test='list-item'
                 key={idx}

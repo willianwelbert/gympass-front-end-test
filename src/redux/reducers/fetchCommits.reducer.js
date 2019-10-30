@@ -34,6 +34,7 @@ const fetchCommit = ( state=INITIAL_STATE, action ) => {
       return {
         ...state,
         commits: state.commits.concat(action.payload),
+        filteredCommits : state.filteredCommits.concat(action.payload),
         page : state.page + 1
       }
     default:
